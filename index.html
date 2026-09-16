@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#eee2ca">
+  <meta name="description" content="Save the date — Ana e Diogo, 28 de agosto de 2027.">
+  <title>Ana & Diogo — 28.08.2027</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%233369a8'/%3E%3Cpath d='M16 33c8-16 14-10 16 0 2-10 8-16 16 0M32 33v17M18 43c6-1 10-4 14-10 4 6 8 9 14 10' fill='none' stroke='%23f3dce3' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=La+Belle+Aurore&family=Montserrat:wght@300;400;500&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="adjustments.css">
+</head>
+<body>
+  <main>
+    <section class="hero panel panel-pink" aria-labelledby="title">
+      <div class="hero-copy">
+        <p class="kicker">Save the Date</p>
+        <h1 id="title">Ana <em>&</em> Diogo</h1>
+        <div class="ornament" aria-hidden="true"><span></span><b>♡</b><span></span></div>
+        <p class="date">28 · 08 · 2027</p>
+        <p class="place">Quinta das Rosas · Alenquer</p>
+        <a class="outline-button" href="#countdown">Contar os dias</a>
+      </div>
+      <div class="invite-stage">
+        <span class="arch" aria-hidden="true"></span>
+        <figure class="invitation">
+          <img src="assets/convite-save-the-date.jpg" alt="Convite Save the Date desenhado à mão para o casamento de Ana e Diogo">
+        </figure>
+        <span class="flourish flourish-one" aria-hidden="true">✦</span>
+        <span class="flourish flourish-two" aria-hidden="true">♡</span>
+      </div>
+      <a class="scroll-cue" href="#countdown" aria-label="Ver a contagem decrescente">↓</a>
+    </section>
+
+    <section class="countdown-section panel panel-blue" id="countdown" aria-labelledby="countdown-title">
+      <div class="bow" aria-hidden="true">
+        <span class="bow-loop left"></span><i></i><span class="bow-loop right"></span>
+        <span class="bow-tail tail-left"></span><span class="bow-tail tail-right"></span>
+      </div>
+      <p class="kicker light">Falta só...</p>
+      <h2 id="countdown-title">Para o nosso “sim”</h2>
+      <div class="countdown" role="timer" aria-live="polite">
+        <div><strong id="days">---</strong><span>dias</span></div>
+        <div><strong id="hours">--</strong><span>horas</span></div>
+        <div><strong id="minutes">--</strong><span>minutos</span></div>
+        <div><strong id="seconds">--</strong><span>segundos</span></div>
+      </div>
+      <button class="outline-button light-button" id="add-calendar" type="button">Adicionar ao calendário</button>
+    </section>
+
+    <section class="locked-section panel panel-pink" aria-labelledby="invite-title">
+      <div class="locked-intro">
+        <h2 id="invite-title">Mais perto da data<br>enviaremos o convite</h2>
+        <p>Esta página vai transformar-se. Aqui vão aparecer todos os detalhes do dia e a confirmação de presença.</p>
+      </div>
+      <div class="preview-grid" aria-label="Conteúdos disponíveis no futuro">
+        <div class="preview-item"><span class="line-icon">⌖</span><h3>O lugar</h3><p>Morada, mapa e indicações.</p></div>
+        <div class="preview-item"><span class="line-icon">◷</span><h3>O dia</h3><p>Horários e programa completo.</p></div>
+        <div class="preview-item"><span class="line-icon">✉</span><h3>RSVP</h3><p>Confirmação de presença.</p></div>
+      </div>
+      <div class="locked-badge" aria-label="Conteúdo bloqueado"><span class="lock-shape" aria-hidden="true"></span><span>Em breve</span></div>
+      <p class="closing">Era uma vez... e depois para sempre.</p>
+      <img class="peeking-dog" src="assets/cao-envelope.png" alt="Ilustração do cão do convite a espreitar com um envelope na boca">
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
