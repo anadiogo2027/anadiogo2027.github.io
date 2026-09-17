@@ -1,4 +1,4 @@
-const weddingDate = new Date("2027-08-28T15:00:00+01:00");
+const weddingDate = new Date("2027-08-28T16:00:00+01:00");
 const fields = {
   days: document.querySelector("#days"),
   hours: document.querySelector("#hours"),
@@ -17,35 +17,39 @@ function updateCountdown() {
   fields.seconds.textContent = String(Math.floor((distance % minute) / 1000)).padStart(2, "0");
 }
 
-function addCalendarEvent() {
-  const isAndroid = /Android/i.test(navigator.userAgent);
-  const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent)
-    || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
-
-  if (isAndroid) {
-    const params = new URLSearchParams({
-      action: "TEMPLATE",
-      text: "Casamento de Ana e Diogo",
-      dates: "20270828/20270829",
-      location: "Quinta das Rosas, Alenquer",
-      details: "Save the Date — Ana e Diogo. Mais detalhes em https://anadiogo2027.github.io/"
-    });
-    window.open(`https://calendar.google.com/calendar/render?${params.toString()}`, "_blank", "noopener");
-    return;
-  }
-
-  const calendarFile = "https://anadiogo2027.github.io/ana-e-diogo-28-08-2027.ics";
-  if (isIOS) {
-    window.location.assign(calendarFile);
-    return;
-  }
-
-  window.open(calendarFile, "_blank", "noopener");
+function downloadCalendarEvent() {
+  const ics = [
+    "BEGIN:VCALENDAR",
+    "VERSION:2.0",
+    "PRODID:-//Ana e Diogo//Convite de Casamento//PT",
+    "BEGIN:VEVENT",
+    "UID:ana-diogo-20270828@casamento",
+    "DTSTAMP:20260917T000000Z",
+    "DTSTART;VALUE=DATE:20270828",
+    "DTEND;VALUE=DATE:20270829",
+    "SUMMARY:Casamento de Ana e Diogo",
+    "LOCATION:Quinta das Rosas, Alenquer",
+    "DESCRIPTION:Cerimónia às 16:00.",
+    "END:VEVENT",
+    "END:VCALENDAR"
+  ].join("\r\n");
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(new Blob([ics], { type: "text/calendar;charset=utf-8" }));
+  link.download = "ana-e-diogo-28-08-2027.ics";
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(link.href);
 }
 
+document.querySelector("#rsvp-form").addEventListener("submit", (event) => {
+  event.preventDefault();
+  const status = document.querySelector("#form-status");
+  status.textContent = "Demonstração concluída — nesta versão de teste a resposta ainda não foi guardada.";
+  status.classList.add("success");
+});
+
+document.querySelector(".disabled-link").addEventListener("click", (event) => event.preventDefault());
+document.querySelector("#add-calendar").addEventListener("click", downloadCalendarEvent);
 updateCountdown();
 setInterval(updateCountdown, 1000);
-document.querySelector("#add-calendar").addEventListener("click", addCalendarEvent);
-document.querySelector(".calendar-link")?.addEventListener("click", () => {
-  window.setTimeout(() => document.querySelector("#add-calendar").focus(), 700);
-});
