@@ -6,8 +6,8 @@ METHOD:PUBLISH
 BEGIN:VEVENT
 UID:ana-diogo-20270828@anadiogo2027.github.io
 DTSTAMP:20260917T000000Z
-DTSTART:20270828T140000Z
-DTEND:20270829T010000Z
+DTSTART;VALUE=DATE:20270828
+DTEND;VALUE=DATE:20270829
 SUMMARY:Casamento de Ana e Diogo
 LOCATION:Quinta das Rosas\, Alenquer
 DESCRIPTION:Save the Date — Ana e Diogo. Mais detalhes em breve em https://anadiogo2027.github.io/
