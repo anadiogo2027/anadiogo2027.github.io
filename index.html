@@ -68,8 +68,7 @@
 
     <section class="place-section pink-section" id="local" aria-labelledby="place-title">
       <div class="place-copy"><p class="eyebrow">O lugar</p><h2 id="place-title">Quinta das Rosas</h2><p>Alenquer</p>
-        <p class="placeholder-note">A morada completa, o mapa e as indicações de estacionamento serão acrescentados nesta área.</p>
-        <a class="button disabled-link" href="#local" aria-disabled="true">Ver no mapa · em breve</a>
+        <a class="button map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Quinta+das+Rosas+Alenquer" target="_blank" rel="noopener">Ver no mapa</a>
       </div>
       <div class="place-illustration" aria-hidden="true"><span class="sun"></span><span class="hill hill-one"></span><span class="hill hill-two"></span><span class="house">⌂</span></div>
     </section>
@@ -96,6 +95,9 @@
         <label>Nome completo<input type="text" name="name" autocomplete="name" required></label>
         <fieldset><legend>Vão estar presentes?</legend><label class="choice"><input type="radio" name="attendance" value="sim" required><span>Sim, com todo o gosto</span></label><label class="choice"><input type="radio" name="attendance" value="nao"><span>Não vamos conseguir</span></label></fieldset>
         <label>Número de pessoas<select name="guests"><option value="1">1 pessoa</option><option value="2">2 pessoas</option><option value="3">3 pessoas</option><option value="4">4 pessoas</option></select></label>
+        <label>Nome da pessoa acompanhante<input type="text" name="companion_name" autocomplete="name" placeholder="Se aplicável"></label>
+        <fieldset><legend>Vêm crianças?</legend><label class="choice"><input type="radio" name="children" value="sim"><span>Sim</span></label><label class="choice"><input type="radio" name="children" value="nao"><span>Não</span></label></fieldset>
+        <label class="children-details" hidden>Nome e idade das crianças<textarea name="children_details" rows="3" placeholder="Ex.: Maria, 6 anos"></textarea></label>
         <label>Restrições alimentares<textarea name="diet" rows="3" placeholder="Alergias, intolerâncias ou preferências"></textarea></label>
         <label>Mensagem para os noivos<textarea name="message" rows="4" placeholder="Escrevam-nos umas palavras"></textarea></label>
         <button class="button" type="submit">Enviar confirmação</button><p class="form-status" id="form-status" role="status" aria-live="polite"></p>
