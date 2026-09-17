@@ -17,32 +17,35 @@ function updateCountdown() {
   fields.seconds.textContent = String(Math.floor((distance % minute) / 1000)).padStart(2, "0");
 }
 
-function downloadCalendarEvent() {
-  const ics = [
-    "BEGIN:VCALENDAR",
-    "VERSION:2.0",
-    "PRODID:-//Ana e Diogo//Save the Date//PT",
-    "BEGIN:VEVENT",
-    "UID:ana-diogo-20270828@save-the-date",
-    "DTSTAMP:20260916T000000Z",
-    "DTSTART:20270828T140000Z",
-    "DTEND:20270829T010000Z",
-    "SUMMARY:Casamento de Ana e Diogo",
-    "LOCATION:Quinta das Rosas, Alenquer",
-    "DESCRIPTION:Save the date — mais detalhes em breve.",
-    "END:VEVENT",
-    "END:VCALENDAR"
-  ].join("\r\n");
-  const link = document.createElement("a");
-  link.href = URL.createObjectURL(new Blob([ics], { type: "text/calendar;charset=utf-8" }));
-  link.download = "ana-e-diogo-28-08-2027.ics";
-  link.click();
-  URL.revokeObjectURL(link.href);
+function addCalendarEvent() {
+  const isAndroid = /Android/i.test(navigator.userAgent);
+  const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent)
+    || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
+  if (isAndroid) {
+    const params = new URLSearchParams({
+      action: "TEMPLATE",
+      text: "Casamento de Ana e Diogo",
+      dates: "20270828T140000Z/20270829T010000Z",
+      location: "Quinta das Rosas, Alenquer",
+      details: "Save the Date — Ana e Diogo. Mais detalhes em https://anadiogo2027.github.io/"
+    });
+    window.open(`https://calendar.google.com/calendar/render?${params.toString()}`, "_blank", "noopener");
+    return;
+  }
+
+  const calendarFile = "https://anadiogo2027.github.io/ana-e-diogo-28-08-2027.ics";
+  if (isIOS) {
+    window.location.assign(calendarFile);
+    return;
+  }
+
+  window.open(calendarFile, "_blank", "noopener");
 }
 
 updateCountdown();
 setInterval(updateCountdown, 1000);
-document.querySelector("#add-calendar").addEventListener("click", downloadCalendarEvent);
-document.querySelector(".calendar-link").addEventListener("click", () => {
+document.querySelector("#add-calendar").addEventListener("click", addCalendarEvent);
+document.querySelector(".calendar-link")?.addEventListener("click", () => {
   window.setTimeout(() => document.querySelector("#add-calendar").focus(), 700);
 });
