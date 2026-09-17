@@ -26,7 +26,7 @@ function addCalendarEvent() {
     const params = new URLSearchParams({
       action: "TEMPLATE",
       text: "Casamento de Ana e Diogo",
-      dates: "20270828T140000Z/20270829T010000Z",
+      dates: "20270828/20270829",
       location: "Quinta das Rosas, Alenquer",
       details: "Save the Date — Ana e Diogo. Mais detalhes em https://anadiogo2027.github.io/"
     });
