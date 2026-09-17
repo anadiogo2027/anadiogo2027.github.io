@@ -49,7 +49,21 @@ document.querySelector("#rsvp-form").addEventListener("submit", (event) => {
   status.classList.add("success");
 });
 
-document.querySelector(".disabled-link").addEventListener("click", (event) => event.preventDefault());
+const childrenDetails = document.querySelector(".children-details");
+document.querySelectorAll('input[name="children"]').forEach((radio) => {
+  radio.addEventListener("change", () => {
+    const hasChildren = radio.value === "sim" && radio.checked;
+    childrenDetails.hidden = !hasChildren;
+    childrenDetails.querySelector("textarea").required = hasChildren;
+  });
+});
+
+document.querySelector(".map-link").addEventListener("click", (event) => {
+  if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+    event.preventDefault();
+    window.open("https://maps.apple.com/?q=Quinta+das+Rosas,+Alenquer", "_blank", "noopener");
+  }
+});
 document.querySelector("#add-calendar").addEventListener("click", downloadCalendarEvent);
 updateCountdown();
 setInterval(updateCountdown, 1000);
